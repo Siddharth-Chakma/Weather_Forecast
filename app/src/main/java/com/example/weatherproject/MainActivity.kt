@@ -7,6 +7,7 @@ import android.provider.Settings
 import android.widget.Toast
 import androidx.databinding.DataBindingUtil
 import com.example.weatherproject.databinding.ActivityMainBinding
+import com.google.android.gms.location.LocationServices
 
 
 class MainActivity : AppCompatActivity() {
@@ -20,8 +21,8 @@ class MainActivity : AppCompatActivity() {
         super.onCreate(savedInstanceState)
         activityMainBinding=DataBindingUtil.setContentView(this,R.layout.activity_main)
         supportActionBar?.hide()
-
         fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this)
+        activityMainBinding.rlMainLayout.visibility=View.GONE
 
         getCurrentLocation();
     }
