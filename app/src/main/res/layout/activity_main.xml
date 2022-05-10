@@ -1,383 +1,386 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    tools:context=".MainActivity">
+    xmlns:tools="http://schemas.android.com/tools">
 
-    <ProgressBar
-        android:layout_width="wrap_content"
-        android:layout_height="wrap_content"
-        android:id="@+id/progress_bar"
-        android:layout_centerInParent="true"
-        android:visibility="gone">
-    </ProgressBar>
+    <data>
+
+    </data>
 
     <RelativeLayout
-    android:layout_width="match_parent"
-    android:layout_height="match_parent"
-    android:visibility="visible"
-    android:id="@+id/main_layout">
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        tools:context=".MainActivity">
 
-        <androidx.cardview.widget.CardView
+        <ProgressBar
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:id="@+id/progress_bar"
+            android:layout_centerInParent="true"
+            android:visibility="gone"></ProgressBar>
+
+        <RelativeLayout
             android:layout_width="match_parent"
-            android:layout_height="80dp"
-            android:id="@+id/search_bar"
-            android:elevation="@dimen/s_huge">
+            android:layout_height="match_parent"
+            android:visibility="visible"
+            android:id="@+id/main_layout">
+
+            <androidx.cardview.widget.CardView
+                android:layout_width="match_parent"
+                android:layout_height="80dp"
+                android:id="@+id/search_bar"
+                android:elevation="@dimen/s_huge">
+
+                <RelativeLayout
+                    android:layout_width="match_parent"
+                    android:layout_height="match_parent"
+                    android:id="@+id/rl_search"
+                    android:background="@color/black">
+
+                    <androidx.cardview.widget.CardView
+                        android:layout_width="match_parent"
+                        android:layout_height="60dp"
+                        android:layout_margin="@dimen/s_large"
+                        app:cardCornerRadius="@dimen/s_large">
+
+                        <EditText
+                            android:layout_width="match_parent"
+                            android:layout_height="match_parent"
+                            android:id="@+id/location"
+                            android:hint="@string/search"
+
+                            android:drawablePadding="@dimen/s_large"
+                            android:imeOptions="actionSearch"
+                            android:inputType="text"
+                            android:paddingStart="@dimen/s_large"
+                            android:paddingEnd="@dimen/s_large"
+
+                            android:background="@color/white"></EditText>
+
+                    </androidx.cardview.widget.CardView>
+
+                </RelativeLayout>
+
+
+            </androidx.cardview.widget.CardView>
 
             <RelativeLayout
                 android:layout_width="match_parent"
                 android:layout_height="match_parent"
-                android:id="@+id/rl_search"
-                android:background="@color/black">
+                android:id="@+id/sub_layer"
+                android:layout_below="@+id/search_bar">
 
-                <androidx.cardview.widget.CardView
+                <FrameLayout
                     android:layout_width="match_parent"
-                    android:layout_height="60dp"
-                    android:layout_margin="@dimen/s_large"
-                    app:cardCornerRadius="@dimen/s_large">
+                    android:layout_height="match_parent">
 
-                    <EditText
+                    <ImageView
                         android:layout_width="match_parent"
                         android:layout_height="match_parent"
-                        android:id="@+id/location"
-                        android:hint="@string/search"
+                        android:scaleType="centerCrop"
+                        android:id="@+id/weather_grad">
 
-                        android:drawablePadding="@dimen/s_large"
-                        android:imeOptions="actionSearch"
-                        android:inputType="text"
-                        android:paddingStart="@dimen/s_large"
-                        android:paddingEnd="@dimen/s_large"
 
-                        android:background="@color/white">
-                    </EditText>
+                    </ImageView>
 
-                </androidx.cardview.widget.CardView>
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:layout_marginTop="@dimen/s_large"
+                        android:layout_marginStart="@dimen/s_huge"
+                        android:orientation="vertical">
+
+                        <TextView
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:id="@+id/date_time"
+
+                            android:textColor="@color/black"
+                            android:textSize="@dimen/t_large"
+                            android:text="@string/dummy_date">
+
+                        </TextView>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/s_large"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/max_temp"
+                                android:layout_weight="3"
+
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/t_large"
+                                android:text="@string/day">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+
+                                android:layout_weight="1"
+
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/t_large"
+                                android:text="@string/day">
+
+                            </TextView>
+
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/s_large"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/temp"
+                                android:layout_weight="1"
+
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/t_giant"
+                                android:text="@string/main_temp">
+
+                            </TextView>
+
+                            <ImageView
+                                android:layout_width="100dp"
+                                android:layout_height="100dp"
+                                android:layout_marginTop="@dimen/s_large"
+                                android:layout_marginEnd="@dimen/s_large"
+                                android:id="@+id/icon">
+
+
+                            </ImageView>
+
+                        </LinearLayout>
+
+                        <LinearLayout
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="@dimen/s_large"
+                            android:orientation="horizontal">
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/feels_like"
+                                android:layout_weight="1"
+
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/t_large"
+                                android:text="@string/feels_like">
+
+                            </TextView>
+
+                            <TextView
+                                android:layout_width="match_parent"
+                                android:layout_height="wrap_content"
+                                android:id="@+id/weather_type"
+                                android:layout_weight="3"
+
+                                android:textColor="@color/black"
+                                android:textSize="@dimen/t_large"
+                                android:text="@string/weather_type">
+
+                            </TextView>
+
+                        </LinearLayout>
+
+                    </LinearLayout>
+                </FrameLayout>
+
+                <com.google.android.material.card.MaterialCardView
+                    android:layout_width="match_parent"
+                    android:layout_height="wrap_content"
+                    android:layout_alignParentBottom="true"
+                    android:layout_marginLeft="@dimen/s_huge"
+                    android:layout_marginTop="50dp"
+                    android:layout_marginRight="@dimen/s_huge"
+                    android:layout_marginBottom="@dimen/s_huge"
+                    android:elevation="@dimen/s_tiny"
+                    app:cardCornerRadius="@dimen/s_large"
+                    app:cardMaxElevation="@dimen/s_tiny"
+                    app:cardElevation="@dimen/s_tiny">
+
+                    <LinearLayout
+                        android:layout_width="match_parent"
+                        android:layout_height="wrap_content"
+                        android:orientation="vertical">
+
+                        <LinearLayout
+                            android:id="@+id/extras_layout_top"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="@dimen/s_tiny"
+                                android:id="@+id/pressure_wrapper">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/s_tiny">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:src="@drawable/pressure"></ImageView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/pressure"
+
+                                        android:textSize="@dimen/t_huge"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/dummy_numbers">
+
+                                    </TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        android:textSize="@dimen/t_medium"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/pressure">
+
+                                    </TextView>
+
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="@dimen/s_tiny"
+                                android:id="@+id/humidity_wrapper">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/s_tiny">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:src="@drawable/pressure"></ImageView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/humidity"
+
+                                        android:textSize="@dimen/t_huge"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/dummy_numbers">
+
+                                    </TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        android:textSize="@dimen/t_medium"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/humidity">
+
+                                    </TextView>
+
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="@dimen/s_tiny"
+                                android:id="@+id/wind_wrapper">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/s_tiny">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:src="@drawable/pressure"></ImageView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/wind"
+
+                                        android:textSize="@dimen/t_huge"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/dummy_numbers">
+
+                                    </TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        android:textSize="@dimen/t_medium"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/wind_speed">
+
+                                    </TextView>
+
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+                        </LinearLayout>
+
+                    </LinearLayout>
+
+
+                </com.google.android.material.card.MaterialCardView>
+
 
             </RelativeLayout>
 
-
-
-        </androidx.cardview.widget.CardView>
-
-  <RelativeLayout
-      android:layout_width="match_parent"
-      android:layout_height="match_parent"
-      android:id="@+id/sub_layer"
-      android:layout_below="@+id/search_bar">
-
-      <FrameLayout
-          android:layout_width="match_parent"
-          android:layout_height="match_parent">
-
-          <ImageView
-              android:layout_width="match_parent"
-              android:layout_height="match_parent"
-              android:scaleType="centerCrop"
-              android:id="@+id/weather_grad">
-
-
-          </ImageView>
-
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:layout_marginTop="@dimen/s_large"
-              android:layout_marginStart="@dimen/s_huge"
-              android:orientation="vertical">
-
-              <TextView
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:id="@+id/date_time"
-
-                  android:textColor="@color/black"
-                  android:textSize="@dimen/t_large"
-                  android:text="@string/dummy_date">
-
-              </TextView>
-              <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="@dimen/s_large"
-                  android:orientation="horizontal">
-
-                  <TextView
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:id="@+id/max_temp"
-                      android:layout_weight="3"
-
-                      android:textColor="@color/black"
-                      android:textSize="@dimen/t_large"
-                      android:text="@string/day">
-
-                  </TextView>
-
-                  <TextView
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-
-                      android:layout_weight="1"
-
-                      android:textColor="@color/black"
-                      android:textSize="@dimen/t_large"
-                      android:text="@string/day">
-
-                  </TextView>
-
-
-              </LinearLayout>
-              <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="@dimen/s_large"
-                  android:orientation="horizontal">
-
-                  <TextView
-                      android:layout_width="0dp"
-                      android:layout_height="wrap_content"
-                      android:id="@+id/temp"
-                      android:layout_weight="1"
-
-                      android:textColor="@color/black"
-                      android:textSize="@dimen/t_giant"
-                      android:text="@string/main_temp">
-
-                  </TextView>
-
-                  <ImageView
-                      android:layout_width="100dp"
-                      android:layout_height="100dp"
-                      android:layout_marginTop="@dimen/s_large"
-                      android:layout_marginEnd="@dimen/s_large"
-                      android:id="@+id/icon">
-
-
-                  </ImageView>
-
-              </LinearLayout>
-              <LinearLayout
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="@dimen/s_large"
-                  android:orientation="horizontal">
-
-                  <TextView
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:id="@+id/feels_like"
-                      android:layout_weight="1"
-
-                      android:textColor="@color/black"
-                      android:textSize="@dimen/t_large"
-                      android:text="@string/feels_like">
-
-                  </TextView>
-
-                  <TextView
-                      android:layout_width="match_parent"
-                      android:layout_height="wrap_content"
-                      android:id="@+id/weather_type"
-                      android:layout_weight="3"
-
-                      android:textColor="@color/black"
-                      android:textSize="@dimen/t_large"
-                      android:text="@string/weather_type">
-
-                  </TextView>
-
-              </LinearLayout>
-
-          </LinearLayout>
-      </FrameLayout>
-
-      <com.google.android.material.card.MaterialCardView
-          android:layout_width="match_parent"
-          android:layout_height="wrap_content"
-          android:layout_alignParentBottom="true"
-          android:layout_marginLeft="@dimen/s_huge"
-          android:layout_marginTop="50dp"
-          android:layout_marginRight="@dimen/s_huge"
-          android:layout_marginBottom="@dimen/s_huge"
-          android:elevation="@dimen/s_tiny"
-          app:cardCornerRadius="@dimen/s_large"
-          app:cardMaxElevation="@dimen/s_tiny"
-          app:cardElevation="@dimen/s_tiny">
-
-          <LinearLayout
-              android:layout_width="match_parent"
-              android:layout_height="wrap_content"
-              android:orientation="vertical">
-
-              <LinearLayout
-                  android:id="@+id/extras_layout_top"
-                  android:layout_width="match_parent"
-                  android:layout_height="wrap_content"
-                  android:layout_marginTop="0dp"
-
-                  android:orientation="horizontal">
-
-                  <RelativeLayout
-                      android:layout_width="0dp"
-                      android:layout_height="wrap_content"
-                      android:layout_weight = "1"
-                      android:padding="@dimen/s_tiny"
-                      android:id="@+id/pressure_wrapper">
-
-                      <LinearLayout
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_centerInParent="true"
-                          android:orientation="vertical"
-                          android:padding="@dimen/s_tiny">
-
-                          <ImageView
-                              android:layout_width="25dp"
-                              android:layout_height="25dp"
-                              android:layout_gravity="center_horizontal"
-                              android:src="@drawable/pressure">
-                          </ImageView>
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-                              android:id="@+id/pressure"
-
-                              android:textSize="@dimen/t_huge"
-                              android:gravity="center"
-                              android:textColor="@color/black"
-                              android:text="@string/dummy_numbers">
-
-                          </TextView>
-
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-
-                              android:textSize="@dimen/t_medium"
-                              android:gravity="center"
-                              android:textColor="@color/black"
-                              android:text="@string/pressure">
-
-                          </TextView>
-
-
-                      </LinearLayout>
-
-
-
-                  </RelativeLayout>
-                  <RelativeLayout
-                      android:layout_width="0dp"
-                      android:layout_height="wrap_content"
-                      android:layout_weight = "1"
-                      android:padding="@dimen/s_tiny"
-                      android:id="@+id/humidity_wrapper">
-
-                      <LinearLayout
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_centerInParent="true"
-                          android:orientation="vertical"
-                          android:padding="@dimen/s_tiny">
-
-                          <ImageView
-                              android:layout_width="25dp"
-                              android:layout_height="25dp"
-                              android:layout_gravity="center_horizontal"
-                              android:src="@drawable/pressure">
-                          </ImageView>
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-                              android:id="@+id/humidity"
-
-                              android:textSize="@dimen/t_huge"
-                              android:gravity="center"
-                              android:textColor="@color/black"
-                              android:text="@string/dummy_numbers">
-
-                          </TextView>
-
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-
-                              android:textSize="@dimen/t_medium"
-                              android:gravity="center"
-                              android:textColor="@color/black"
-                              android:text="@string/humidity">
-
-                          </TextView>
-
-
-                      </LinearLayout>
-
-
-
-                  </RelativeLayout>
-                  <RelativeLayout
-                      android:layout_width="0dp"
-                      android:layout_height="wrap_content"
-                      android:layout_weight = "1"
-                      android:padding="@dimen/s_tiny"
-                      android:id="@+id/wind_wrapper">
-
-                      <LinearLayout
-                          android:layout_width="match_parent"
-                          android:layout_height="wrap_content"
-                          android:layout_centerInParent="true"
-                          android:orientation="vertical"
-                          android:padding="@dimen/s_tiny">
-
-                          <ImageView
-                              android:layout_width="25dp"
-                              android:layout_height="25dp"
-                              android:layout_gravity="center_horizontal"
-                              android:src="@drawable/pressure">
-                          </ImageView>
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-                              android:id="@+id/wind"
-
-                              android:textSize="@dimen/t_huge"
-                              android:gravity="center"
-                              android:textColor="@color/black"
-                              android:text="@string/dummy_numbers">
-
-                          </TextView>
-
-                          <TextView
-                              android:layout_width="match_parent"
-                              android:layout_height="wrap_content"
-
-                              android:textSize="@dimen/t_medium"
-                              android:gravity="center"
-                              android:textColor="@color/black"
-                              android:text="@string/wind_speed">
-
-                          </TextView>
-
-
-                      </LinearLayout>
-
-
-
-                  </RelativeLayout>
-              </LinearLayout>
-
-          </LinearLayout>
-
-
-
-
-      </com.google.android.material.card.MaterialCardView>
-
-
-
-  </RelativeLayout>
-
+        </RelativeLayout>
     </RelativeLayout>
-</RelativeLayout>
+</layout>
