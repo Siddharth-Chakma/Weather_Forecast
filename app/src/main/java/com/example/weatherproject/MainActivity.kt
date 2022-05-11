@@ -129,8 +129,18 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.tvPressure.text = body.main.pressure.toString()
         activityMainBinding.tvHumidity.text = body.main.humidity.toString() + " %"
         activityMainBinding.tvWindSpeed.text = body.wind.speed.toString() + " m/s"
-
         activityMainBinding.tvTempFahrenheit.text = ""+((kelvinToCelsius((body.main.temp)).times(1.8).plus(32).roundToInt()))
+        activityMainBinding.etGetCityName.setText(body.name)
+        updateUI(body.weather[0].id)
+    }
+
+    private fun updateUI(id: Int) {
+
+
+
+            activityMainBinding.pbLoading.visibility=View.GONE
+            activityMainBinding.rlMainLayout.visibility= View.VISIBLE
+
 
 
     }
@@ -145,12 +155,11 @@ class MainActivity : AppCompatActivity() {
         return localTime.toString()
     }
 
-    private fun kelvinToCelsius(temp: Double): Double{
 
+    private fun kelvinToCelsius(temp: Double): Double{
         var intTemp = temp
         intTemp = intTemp.minus(273)
         return intTemp.toBigDecimal().setScale(1,RoundingMode.UP).toDouble()
-
     }
 
 
