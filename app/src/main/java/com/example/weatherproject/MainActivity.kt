@@ -1,12 +1,17 @@
 package com.example.weatherproject
 
+import android.content.Intent
 import android.content.pm.PackageManager
+import android.location.Location
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.view.View
 import android.widget.Toast
+import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
 import com.example.weatherproject.databinding.ActivityMainBinding
+import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 
 
@@ -22,7 +27,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding=DataBindingUtil.setContentView(this,R.layout.activity_main)
         supportActionBar?.hide()
         fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this)
-        activityMainBinding.rlMainLayout.visibility=View.GONE
+        activityMainBinding.rlMainLayout.visibility= View.GONE
 
         getCurrentLocation();
     }
@@ -78,18 +83,18 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun isLocationEnabled():Boolean{...}
+    private fun isLocationEnabled():Boolean{}
 
-    private fun requestPermission() {...}
+    private fun requestPermission() {}
 
-    companion object{...}
+    companion object{}
 
     private fun checkPermissions():Boolean
-    {...}
+    {}
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
-    ) {...}
+    ) {}
 }
