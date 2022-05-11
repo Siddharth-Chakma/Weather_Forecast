@@ -12,10 +12,14 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
+import com.example.weatherproject.POJO.ModelClass
 import com.example.weatherproject.Utilities.ApiUtilities
 import com.example.weatherproject.databinding.ActivityMainBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import java.math.RoundingMode
+import java.text.SimpleDateFormat
+import java.util.*
 
 
 class MainActivity : AppCompatActivity() {
@@ -84,6 +88,27 @@ class MainActivity : AppCompatActivity() {
     private fun fetchCurrentLocationWeather(latitude: String,longitude:String) {
         activityMainBinding.pbLoading.visibility = View.VISIBLE
 
+
+
+    }
+
+    private fun setDataOnViews(body: ModelClass?)
+    {
+        val sdf=SimpleDateFormat("dd/MM/yyyy hh:mm")
+        val currentDate=sdf.format(Date())
+        activityMainBinding.tvDateTime.text=currentDate
+        activityMainBinding.tvDayMaxTemp.text="Day "+kelvinToCelcius(body!!.main.temp_max) + ""
+        activityMainBinding.tvDayMinTemp.text="Night "+kelvinToCelcius(body!!.main.temp_min) + ""
+        activityMainBinding.tvTemp.text=""+kelvinToCelcius(body!!.main.temp) + ""
+        activityMainBinding.tvFeelsLike.text=""+kelvinToCelcius(body!!.main.feels_like) + ""
+        activityMainBinding.tvWeatherType.text=body.weather[0].main
+    }
+
+    private fun kelvinToCelcius(temp: Double): Double{
+
+        var intTemp = temp
+        intTemp = intTemp.minus(273)
+        return intTemp.toBigDecimal().setScale(1,RoundingMode.UP).toDouble()
 
     }
 
