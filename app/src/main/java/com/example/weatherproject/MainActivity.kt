@@ -9,6 +9,8 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import android.view.inputmethod.EditorInfo
+import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -45,6 +47,43 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.rlMainLayout.visibility= View.GONE
 
         getCurrentLocation()
+
+        activityMainBinding.etGetCityName.setOnEditorActionListener { v, actionId, keyEvent ->
+            if(actionId== EditorInfo.IME_ACTION_SEARCH)
+            {
+                getCityWeather(activityMainBinding.etGetCityName.text.toString())
+                val view = this.currentFocus
+                if(view!=null)
+                {
+                    val imm:InputMethodManager=getSystemService(INPUT_METHOD_SERVICE)as InputMethodManager
+                    imm.hideSoftInputFromWindow(view.windowToken, 0)
+                    activityMainBinding.etGetCityName.clearFocus()
+
+                }
+
+                true
+            }
+
+            else false
+        }
+
+    }
+
+    private fun getCityWeather(cityName: String) {
+        activityMainBinding.pbLoading.visibility=View.VISIBLE
+        ApiUtilities.getApiInterface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(
+            object : Callback<ModelClass> {
+                override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
+                    setDataOnViews(response.body())
+
+                }
+
+                override fun onFailure(call: Call<ModelClass>, t: Throwable) {
+                    Toast.makeText(applicationContext, "WRONG CITY NAME!!!", Toast.LENGTH_SHORT)
+                        .show()
+                }
+
+            })
     }
 
     private fun getCurrentLocation()
@@ -138,6 +177,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
+
+
+
+
             activityMainBinding.pbLoading.visibility=View.GONE
             activityMainBinding.rlMainLayout.visibility= View.VISIBLE
 
@@ -179,7 +222,7 @@ class MainActivity : AppCompatActivity() {
 
     companion object{
         private const val PERMISSION_REQUEST_ACCESS_LOCATION=100
-        const val API_KEY = "dab3af44de7d24ae7ff86549334e45bd"
+        const val API_KEY = "3c709ccaf2730aa1c263925f75db631a"
     }
 
     private fun checkPermissions():Boolean
