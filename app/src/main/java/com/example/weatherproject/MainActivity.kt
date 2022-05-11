@@ -1,8 +1,10 @@
 package com.example.weatherproject
 
+import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
+import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
@@ -86,13 +88,17 @@ class MainActivity : AppCompatActivity() {
     }
 
 
-    private fun isLocationEnabled():Boolean{}
+    private fun isLocationEnabled():Boolean{
+        val locationManager:LocationManager=getSystemService(Context.LOCATION_SERVICE) as LocationManager
+        return locationManager.isProviderEnabled(LocationManager.GPS_PROVIDER)||locationManager.isProviderEnabled(
+            LocationManager.NETWORK_PROVIDER)
+    }
 
     private fun requestPermission() {
         ActivityCompat.requestPermissions(
             this, arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,
             android.Manifest.permission.ACCESS_FINE_LOCATION),
-            
+            PERMISSION_REQUEST_ACCESS_LOCATION
         )
     }
 
@@ -102,11 +108,32 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun checkPermissions():Boolean
-    {}
+    {
+        if(ActivityCompat.checkSelfPermission(this,
+            android.Manifest.permission.ACCESS_COARSE_LOCATION) ==PackageManager.PERMISSION_GRANTED && ActivityCompat.checkSelfPermission(this,
+            android.Manifest.permission.ACCESS_FINE_LOCATION) == PackageManager.PERMISSION_GRANTED)
+        {
+            return true
+        }
+        return false
+    }
 
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
         grantResults: IntArray
-    ) {}
+    ) {
+        super.onRequestPermissionsResult(requestCode, permissions, grantResults)
+        if(requestCode== PERMISSION_REQUEST_ACCESS_LOCATION)
+        {
+            if(grantResults.isNotEmpty() && grantResults[0]==PackageManager.PERMISSION_GRANTED)
+            {
+                Toast.makeText(applicationContext, "Granted", Toast.LENGTH_SHORT).show()
+                getCurrentLocation()
+            }
+            else{
+                Toast.makeText(applicationContext, "Denied", Toast.LENGTH_SHORT).show()
+            }
+        }
+    }
 }
