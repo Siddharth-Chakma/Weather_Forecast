@@ -9,11 +9,13 @@ import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
+import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
+import androidx.core.content.ContextCompat
 import androidx.databinding.DataBindingUtil
 import com.example.weatherproject.POJO.ModelClass
 import com.example.weatherproject.Utilities.ApiUtilities
@@ -174,6 +176,21 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun updateUI(id: Int) {
+
+        if (id in 200..232)
+        {
+            //thunderstorm
+            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
+            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
+            window.statusBarColor= resources.getColor(R.color.thunderstorm)
+            activityMainBinding.rlToolbar.setBackgroundColor(resources.getColor(R.color.thunderstorm))
+            activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(
+                this@MainActivity
+            )
+        }
+
+
+
 
 
 
