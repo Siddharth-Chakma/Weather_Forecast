@@ -3,7 +3,7 @@ package com.example.weatherproject.Utilities
 import retrofit2.Retrofit
 import retrofit2.converter.gson.GsonConverterFactory
 
-class ApiUtilities {
+object ApiUtilities {
 
     private var retrofit:Retrofit?=null
     var BASE_URL="https://api.openweathermap.org/data/2.5/";

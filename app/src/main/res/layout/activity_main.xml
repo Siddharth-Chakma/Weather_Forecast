@@ -17,7 +17,9 @@
             android:layout_height="wrap_content"
             android:id="@+id/pb_loading"
             android:layout_centerInParent="true"
-            android:visibility="gone"></ProgressBar>
+            android:visibility="gone">
+
+        </ProgressBar>
 
         <RelativeLayout
             android:layout_width="match_parent"
@@ -55,7 +57,9 @@
                             android:paddingStart="@dimen/s_large"
                             android:paddingEnd="@dimen/s_large"
 
-                            android:background="@color/white"></EditText>
+                            android:background="@color/white">
+
+                        </EditText>
 
                     </androidx.cardview.widget.CardView>
 
@@ -243,7 +247,9 @@
                                         android:layout_width="25dp"
                                         android:layout_height="25dp"
                                         android:layout_gravity="center_horizontal"
-                                        android:src="@drawable/pressure"></ImageView>
+                                        android:src="@drawable/pressure">
+
+                                    </ImageView>
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -292,7 +298,9 @@
                                         android:layout_width="25dp"
                                         android:layout_height="25dp"
                                         android:layout_gravity="center_horizontal"
-                                        android:src="@drawable/pressure"></ImageView>
+                                        android:src="@drawable/pressure">
+
+                                    </ImageView>
 
                                     <TextView
                                         android:layout_width="match_parent"
@@ -341,12 +349,175 @@
                                         android:layout_width="25dp"
                                         android:layout_height="25dp"
                                         android:layout_gravity="center_horizontal"
-                                        android:src="@drawable/pressure"></ImageView>
+                                        android:src="@drawable/pressure">
+
+                                    </ImageView>
 
                                     <TextView
                                         android:layout_width="match_parent"
                                         android:layout_height="wrap_content"
                                         android:id="@+id/tv_wind_speed"
+
+                                        android:textSize="@dimen/t_huge"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/default_numbers">
+
+                                    </TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        android:textSize="@dimen/t_medium"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/wind_speed">
+
+                                    </TextView>
+
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+                        </LinearLayout>
+                        <LinearLayout
+                            android:id="@+id/ll_main_bg_below"
+                            android:layout_width="match_parent"
+                            android:layout_height="wrap_content"
+                            android:layout_marginTop="0dp"
+
+                            android:orientation="horizontal">
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="@dimen/s_tiny"
+                                android:id="@+id/rl_sunrise_wrapper">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/s_tiny">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:src="@drawable/pressure">
+
+                                    </ImageView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/tv_sunrise"
+
+                                        android:textSize="@dimen/t_huge"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/default_numbers">
+
+                                    </TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        android:textSize="@dimen/t_medium"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/pressure">
+
+                                    </TextView>
+
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="@dimen/s_tiny"
+                                android:id="@+id/rl_sunset_wrapper">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/s_tiny">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:src="@drawable/pressure">
+
+                                    </ImageView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/tv_sunset"
+
+                                        android:textSize="@dimen/t_huge"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/default_numbers">
+
+                                    </TextView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+
+                                        android:textSize="@dimen/t_medium"
+                                        android:gravity="center"
+                                        android:textColor="@color/black"
+                                        android:text="@string/humidity">
+
+                                    </TextView>
+
+
+                                </LinearLayout>
+
+
+                            </RelativeLayout>
+
+                            <RelativeLayout
+                                android:layout_width="0dp"
+                                android:layout_height="wrap_content"
+                                android:layout_weight="1"
+                                android:padding="@dimen/s_tiny"
+                                android:id="@+id/rl_temp_fahrenheit_wrapper">
+
+                                <LinearLayout
+                                    android:layout_width="match_parent"
+                                    android:layout_height="wrap_content"
+                                    android:layout_centerInParent="true"
+                                    android:orientation="vertical"
+                                    android:padding="@dimen/s_tiny">
+
+                                    <ImageView
+                                        android:layout_width="25dp"
+                                        android:layout_height="25dp"
+                                        android:layout_gravity="center_horizontal"
+                                        android:src="@drawable/pressure">
+
+                                    </ImageView>
+
+                                    <TextView
+                                        android:layout_width="match_parent"
+                                        android:layout_height="wrap_content"
+                                        android:id="@+id/tv_temp_fahrenheit"
 
                                         android:textSize="@dimen/t_huge"
                                         android:gravity="center"
