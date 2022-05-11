@@ -51,7 +51,7 @@ class MainActivity : AppCompatActivity() {
         getCurrentLocation()
 
 
-        activityMainBinding.etGetCityName.setOnEditorActionListener { v, actionId, keyEvent ->
+        activityMainBinding.etGetCityName.setOnEditorActionListener ( { v, actionId, keyEvent ->
             if(actionId== EditorInfo.IME_ACTION_SEARCH)
             {
                 getCityWeather(activityMainBinding.etGetCityName.text.toString())
@@ -68,25 +68,28 @@ class MainActivity : AppCompatActivity() {
             }
 
             else false
-        }
-
+        })
     }
 
     private fun getCityWeather(cityName: String) {
         activityMainBinding.pbLoading.visibility=View.VISIBLE
-        ApiUtilities.getApiInterface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(
-            object : Callback<ModelClass> {
-                override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
-                    TODO("Not yet implemented")
-                }
+        ApiUtilities.getApiInterface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(object :
+            Callback<ModelClass> {
+            override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
+                setDataOnViews(response.body())
+            }
 
-                override fun onFailure(call: Call<ModelClass>, t: Throwable) {
-                    Toast.makeText(applicationContext, "WRONG CITY NAME!!!", Toast.LENGTH_SHORT)
-                        .show()
-                }
+            override fun onFailure(call: Call<ModelClass>, t: Throwable) {
+                Toast.makeText(applicationContext, "Wrong City Name.", Toast.LENGTH_SHORT).show()
 
-            })
+            }
+
+        })
+
+
+
     }
+
 
     private fun getCurrentLocation()
     {
@@ -163,7 +166,7 @@ class MainActivity : AppCompatActivity() {
         activityMainBinding.tvDayMaxTemp.text = "Day "+kelvinToCelsius(body!!.main.temp_max) + "°"
         activityMainBinding.tvDayMinTemp.text = "Night "+kelvinToCelsius(body!!.main.temp_min) + "°"
         activityMainBinding.tvTemp.text = ""+kelvinToCelsius(body!!.main.temp) + "°"
-        activityMainBinding.tvFeelsLike.text = ""+kelvinToCelsius(body!!.main.feels_like) + "°"
+        activityMainBinding.tvFeelsLike.text = "Feels like: "+kelvinToCelsius(body!!.main.feels_like) + "°"
         activityMainBinding.tvWeatherType.text = body.weather[0].main
         activityMainBinding.tvSunrise.text = timeStampToLocalDate(body.sys.sunrise.toLong())
         activityMainBinding.tvSunset.text = timeStampToLocalDate(body.sys.sunset.toLong())
@@ -177,17 +180,7 @@ class MainActivity : AppCompatActivity() {
 
     private fun updateUI(id: Int) {
 
-        if (id in 200..232)
-        {
-            //thunderstorm
-            window.addFlags(WindowManager.LayoutParams.FLAG_DRAWS_SYSTEM_BAR_BACKGROUNDS)
-            window.clearFlags(WindowManager.LayoutParams.FLAG_TRANSLUCENT_STATUS)
-            window.statusBarColor= resources.getColor(R.color.thunderstorm)
-            activityMainBinding.rlToolbar.setBackgroundColor(resources.getColor(R.color.thunderstorm))
-            activityMainBinding.rlSubLayout.background = ContextCompat.getDrawable(
-                this@MainActivity
-            )
-        }
+
 
 
 
