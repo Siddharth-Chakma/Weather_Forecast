@@ -85,9 +85,16 @@ class MainActivity : AppCompatActivity() {
 
     private fun isLocationEnabled():Boolean{}
 
-    private fun requestPermission() {}
+    private fun requestPermission() {
+        ActivityCompat.requestPermissions(
+            this, arrayOf(android.Manifest.permission.ACCESS_COARSE_LOCATION,
+            android.Manifest.permission.ACCESS_FINE_LOCATION),
+            
+        )
+    }
 
-    companion object{}
+    companion object{
+    }
 
     private fun checkPermissions():Boolean
     {}
