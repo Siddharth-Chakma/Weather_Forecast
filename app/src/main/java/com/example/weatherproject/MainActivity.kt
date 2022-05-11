@@ -10,6 +10,7 @@ import android.view.View
 import android.widget.Toast
 import androidx.core.app.ActivityCompat
 import androidx.databinding.DataBindingUtil
+import com.example.weatherproject.Utilities.ApiUtilities
 import com.example.weatherproject.databinding.ActivityMainBinding
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
@@ -79,6 +80,8 @@ class MainActivity : AppCompatActivity() {
     }
 
     private fun fetchCurrentLocationWeather(latitude: String,longitude:String) {
+        activityMainBinding.pbLoading.visibility = View.VISIBLE
+
 
     }
 
@@ -87,7 +90,10 @@ class MainActivity : AppCompatActivity() {
 
     private fun requestPermission() {}
 
-    companion object{}
+    companion object{
+        private const val PERMISSION_REQUEST_ACCESS_LOCATION=100
+        const val API_KEY = "dab3af44de7d24ae7ff86549334e45bd"
+    }
 
     private fun checkPermissions():Boolean
     {}
