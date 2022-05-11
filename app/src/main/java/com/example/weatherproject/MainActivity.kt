@@ -48,6 +48,7 @@ class MainActivity : AppCompatActivity() {
 
         getCurrentLocation()
 
+
         activityMainBinding.etGetCityName.setOnEditorActionListener { v, actionId, keyEvent ->
             if(actionId== EditorInfo.IME_ACTION_SEARCH)
             {
@@ -74,8 +75,7 @@ class MainActivity : AppCompatActivity() {
         ApiUtilities.getApiInterface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(
             object : Callback<ModelClass> {
                 override fun onResponse(call: Call<ModelClass>, response: Response<ModelClass>) {
-                    setDataOnViews(response.body())
-
+                    TODO("Not yet implemented")
                 }
 
                 override fun onFailure(call: Call<ModelClass>, t: Throwable) {
