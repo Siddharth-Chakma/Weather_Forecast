@@ -1,5 +1,6 @@
 package com.example.weatherproject
 
+import android.annotation.SuppressLint
 import android.content.Context
 import android.content.Intent
 import android.content.pm.PackageManager
@@ -12,6 +13,7 @@ import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
 import android.view.inputmethod.InputMethodManager
+import android.widget.Button
 import android.widget.Toast
 import androidx.annotation.RequiresApi
 import androidx.core.app.ActivityCompat
@@ -41,7 +43,10 @@ class MainActivity : AppCompatActivity() {
 
 
 
+    @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
+
+
         super.onCreate(savedInstanceState)
         activityMainBinding=DataBindingUtil.setContentView(this,R.layout.activity_main)
         supportActionBar?.hide()
@@ -69,7 +74,22 @@ class MainActivity : AppCompatActivity() {
 
             else false
         })
+
+
+        activityMainBinding.aboutUs.setOnClickListener{
+            val intent = Intent(this, AboutUsActivity::class.java)
+            startActivity(intent)
+        }
+
+        activityMainBinding.faqBtn.setOnClickListener{
+            val intent = Intent(this, FAQActivity::class.java)
+            startActivity(intent)
+        }
+
+
     }
+
+
 
     private fun getCityWeather(cityName: String) {
         activityMainBinding.pbLoading.visibility=View.VISIBLE
@@ -246,6 +266,8 @@ class MainActivity : AppCompatActivity() {
         return false
     }
 
+
+
     override fun onRequestPermissionsResult(
         requestCode: Int,
         permissions: Array<out String>,
@@ -264,4 +286,9 @@ class MainActivity : AppCompatActivity() {
             }
         }
     }
+
+
+    //aboutusbutton
+    //aboutusactivity.onclick
+
 }

@@ -200,7 +200,20 @@
 
                         </LinearLayout>
 
+                        <ImageButton
+                            android:id="@+id/faq_btn"
+                            android:layout_width="70dp"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_baseline_question_answer_24" />
+
+                        <ImageButton
+                            android:id="@+id/about_us"
+                            android:layout_width="72dp"
+                            android:layout_height="wrap_content"
+                            app:srcCompat="@drawable/ic_baseline_supervised_user_circle_24" />
+
                     </LinearLayout>
+
                 </FrameLayout>
 
                 <com.google.android.material.card.MaterialCardView
