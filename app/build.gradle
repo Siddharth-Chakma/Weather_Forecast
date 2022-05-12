@@ -32,6 +32,7 @@ android {
     buildFeatures{
         dataBinding = true
     }
+
 }
 
 dependencies {
@@ -49,6 +50,11 @@ dependencies {
     implementation 'com.squareup.retrofit2:retrofit:2.9.0'
     implementation 'com.google.code.gson:gson:2.8.9'
     implementation 'com.squareup.retrofit2:converter-gson:2.4.0'
+
+// google admob
+    implementation 'com.google.android.gms:play-services-ads:20.6.0'
+
+
 
 
 }

@@ -22,6 +22,8 @@ import androidx.databinding.DataBindingUtil
 import com.example.weatherproject.POJO.ModelClass
 import com.example.weatherproject.Utilities.ApiUtilities
 import com.example.weatherproject.databinding.ActivityMainBinding
+import com.google.android.gms.ads.AdRequest
+import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
 import retrofit2.Call
@@ -49,6 +51,14 @@ class MainActivity : AppCompatActivity() {
 
         super.onCreate(savedInstanceState)
         activityMainBinding=DataBindingUtil.setContentView(this,R.layout.activity_main)
+
+
+        MobileAds.initialize(this)
+        val adBuilder = AdRequest.Builder().build()
+        activityMainBinding.adView.loadAd(adBuilder)
+
+
+
         supportActionBar?.hide()
         fusedLocationProviderClient= LocationServices.getFusedLocationProviderClient(this)
         activityMainBinding.rlMainLayout.visibility= View.GONE
