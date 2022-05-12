@@ -9,6 +9,7 @@
     <color name="white">#FFFFFFFF</color>
 
     <color name="thunderstorm">#FFFFFFFF</color>
+    <color name="semiTransparentColor">#BAC5FFFF</color>
 
 
 </resources>
