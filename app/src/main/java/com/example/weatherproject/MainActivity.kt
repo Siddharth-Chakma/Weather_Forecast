@@ -92,6 +92,7 @@ class MainActivity : AppCompatActivity() {
 
 
     private fun getCityWeather(cityName: String) {
+
         activityMainBinding.pbLoading.visibility=View.VISIBLE
         ApiUtilities.getApiInterface()?.getCityWeatherData(cityName, API_KEY)?.enqueue(object :
             Callback<ModelClass> {
