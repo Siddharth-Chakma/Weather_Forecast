@@ -66,7 +66,7 @@ class MainActivity : AppCompatActivity() {
         getCurrentLocation()
 
 
-        activityMainBinding.etGetCityName.setOnEditorActionListener ( { v, actionId, keyEvent ->
+        activityMainBinding.etGetCityName.setOnEditorActionListener  { v, actionId, keyEvent ->
             if(actionId== EditorInfo.IME_ACTION_SEARCH)
             {
                 getCityWeather(activityMainBinding.etGetCityName.text.toString())
@@ -83,7 +83,7 @@ class MainActivity : AppCompatActivity() {
             }
 
             else false
-        })
+        }
 
 
         activityMainBinding.aboutUs.setOnClickListener{
@@ -140,7 +140,8 @@ class MainActivity : AppCompatActivity() {
                     val location: Location?=task.result
                     if(location==null)
                     {
-                        Toast.makeText(this,"Null Received", Toast.LENGTH_SHORT).show()
+                        //Toast.makeText(this,"Null Received", Toast.LENGTH_SHORT).show()
+                        fetchCurrentLocationWeather(23.76137119142536.toString(), 90.35059989467042.toString())
                     }
                     else
                     {
