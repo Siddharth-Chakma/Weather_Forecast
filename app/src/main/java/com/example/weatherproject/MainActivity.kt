@@ -6,7 +6,6 @@ import android.content.Intent
 import android.content.pm.PackageManager
 import android.location.Location
 import android.location.LocationManager
-import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
 import android.view.View
@@ -36,9 +35,10 @@ import java.time.Instant
 import java.time.ZoneId
 import java.util.*
 import kotlin.math.roundToInt
+import androidx.appcompat.app.AppCompatActivity as AppCompatActivity1
 
 
-class MainActivity : AppCompatActivity() {
+class MainActivity : AppCompatActivity1() {
 
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var activityMainBinding: ActivityMainBinding
@@ -86,13 +86,10 @@ class MainActivity : AppCompatActivity() {
         }
 
 
-        activityMainBinding.aboutUs.setOnClickListener{
-            val intent = Intent(this, AboutUsActivity::class.java)
-            startActivity(intent)
-        }
 
-        activityMainBinding.faqBtn.setOnClickListener{
-            val intent = Intent(this, FAQActivity::class.java)
+
+        activityMainBinding.MenuButton.setOnClickListener{
+            val intent = Intent(this, Menu_Activity::class.java)
             startActivity(intent)
         }
 

@@ -43,28 +43,41 @@
                     android:background="@color/black">
 
                     <androidx.cardview.widget.CardView
-                        android:layout_width="match_parent"
-                        android:layout_height="60dp"
-                        android:layout_margin="@dimen/s_large"
+                        android:layout_width="312dp"
+                        android:layout_height="65dp"
+                        android:layout_marginStart="@dimen/s_large"
+                        android:layout_marginTop="@dimen/s_large"
+                        android:layout_marginEnd="@dimen/s_large"
+                        android:layout_marginBottom="@dimen/s_large"
                         app:cardCornerRadius="@dimen/s_large">
 
                         <EditText
-                            android:layout_width="match_parent"
-                            android:layout_height="match_parent"
                             android:id="@+id/et_get_city_name"
-                            android:hint="@string/search_places"
+                            android:layout_width="308dp"
+                            android:layout_height="match_parent"
+                            android:background="@color/white"
 
                             android:drawablePadding="@dimen/s_large"
+                            android:hint="@string/search_places"
                             android:imeOptions="actionSearch"
                             android:inputType="text"
                             android:paddingStart="@dimen/s_large"
-                            android:paddingEnd="@dimen/s_large"
 
-                            android:background="@color/white">
+                            android:paddingEnd="@dimen/s_large">
 
                         </EditText>
 
                     </androidx.cardview.widget.CardView>
+
+                    <ImageButton
+                        android:id="@+id/Menu_Button"
+                        android:layout_width="wrap_content"
+                        android:layout_height="wrap_content"
+                        android:layout_alignParentStart="true"
+                        android:layout_alignParentEnd="true"
+                        android:layout_marginStart="337dp"
+                        android:layout_marginEnd="27dp"
+                        ads:srcCompat="@drawable/ic_baseline_menu_24" />
 
                 </RelativeLayout>
 
@@ -203,18 +216,6 @@
                             </TextView>
 
                         </LinearLayout>
-
-                        <ImageButton
-                            android:id="@+id/faq_btn"
-                            android:layout_width="70dp"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_baseline_question_answer_24" />
-
-                        <ImageButton
-                            android:id="@+id/about_us"
-                            android:layout_width="72dp"
-                            android:layout_height="wrap_content"
-                            app:srcCompat="@drawable/ic_baseline_supervised_user_circle_24" />
 
                     </LinearLayout>
 
