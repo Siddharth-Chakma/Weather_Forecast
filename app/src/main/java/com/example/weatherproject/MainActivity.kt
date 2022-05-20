@@ -9,6 +9,7 @@ import android.location.LocationManager
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
 import android.provider.Settings
+import android.util.Log
 import android.view.View
 import android.view.WindowManager
 import android.view.inputmethod.EditorInfo
@@ -26,6 +27,12 @@ import com.google.android.gms.ads.AdRequest
 import com.google.android.gms.ads.MobileAds
 import com.google.android.gms.location.FusedLocationProviderClient
 import com.google.android.gms.location.LocationServices
+import com.google.firebase.database.DataSnapshot
+import com.google.firebase.database.DatabaseError
+import com.google.firebase.database.ValueEventListener
+import com.google.firebase.database.core.Tag
+import com.google.firebase.database.ktx.database
+import com.google.firebase.ktx.Firebase
 import retrofit2.Call
 import retrofit2.Callback
 import retrofit2.Response
@@ -40,13 +47,41 @@ import kotlin.math.roundToInt
 
 class MainActivity : AppCompatActivity() {
 
+    private var value_API = ""
+
+
     private lateinit var fusedLocationProviderClient: FusedLocationProviderClient
     private lateinit var activityMainBinding: ActivityMainBinding
 
+    private val PERMISSION_REQUEST_ACCESS_LOCATION=100
+    var API_KEY = ""
 
 
     @SuppressLint("WrongViewCast")
     override fun onCreate(savedInstanceState: Bundle?) {
+
+        //Sid
+        // Write a message to the database
+        val database = Firebase.database
+        val myRef = database.getReference("message")
+        DifferentApiKeys()
+
+
+
+        // Read from the database
+        myRef.addValueEventListener(object : ValueEventListener {
+            override fun onDataChange(dataSnapshot: DataSnapshot) {
+                // This method is called once with the initial value and again
+                // whenever data at this location is updated.
+                val value = dataSnapshot.key
+                //Log.d(android.nfc.Ta, "Value is: $value")
+            }
+
+            override fun onCancelled(error: DatabaseError) {
+                // Failed to read value
+                //Log.w(Tag, "Failed to read value.", error.toException())
+            }
+        })
 
 
         super.onCreate(savedInstanceState)
@@ -259,9 +294,55 @@ class MainActivity : AppCompatActivity() {
         )
     }
 
+
+    fun gatV(): String {
+        return value_API
+    }
+
+    /*  NOT USING FOR THE API KEY*/
     companion object{
+        //api keys
+        var x = ""
+        private fun DifferentApiKeys(){
+            val database = Firebase.database
+            //val myRef = database.getReference("Apikeys/FreeWeather")
+            val myRef = database.getReference("Apikeys/OpenWeather")
+
+            fun concat(s1: String, s2: String): String {
+                return s1.plus(s2)
+            }
+
+
+            // Read from the database
+            myRef.addValueEventListener(object : ValueEventListener {
+                override fun onDataChange(dataSnapshot: DataSnapshot): String {
+                    // This method is called once with the initial value and again
+                    // whenever data at this location is updated.
+                    var value_API = dataSnapshot.value.toString()
+
+                    val a= "key"
+                    val c = a+value_API
+                    x = value_API
+                    return x
+                    //print(c)
+                    //Toast.makeText(this@MainActivity, c, Toast.LENGTH_SHORT).show()
+                    //Log.d(android.nfc.Ta, "Value is: $value")
+                }
+
+                override fun onCancelled(error: DatabaseError) {
+                    // Failed to read value
+                    //Log.w(Tag, "Failed to read value.", error.toException())
+                }
+            })
+
+
+
+
+        }
+
+
         private const val PERMISSION_REQUEST_ACCESS_LOCATION=100
-        const val API_KEY = "3c709ccaf2730aa1c263925f75db631a"
+        var API_KEY = DifferentApiKeys()
     }
 
     private fun checkPermissions():Boolean
